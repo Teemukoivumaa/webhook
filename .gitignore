@@ -1,3 +1,9 @@
+# Tempo
+**/tempo-data
+
+# Grafana data
+**/grafana-data
+
 # Logs
 logs
 *.log

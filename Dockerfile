@@ -14,8 +14,7 @@ RUN yarn install --production
 COPY . .
 
 # Expose the port the app runs on
-EXPOSE 3000
+EXPOSE 3001
 
-# Command to run the application
-CMD ["node", "app.js"]
-
+# Command to run the application with analytics
+CMD ["yarn", "start:analytics"]
