@@ -1,7 +1,91 @@
-version: '3'
 services:
   webhook-app:
     build: .
+    restart: unless-stopped
     ports:
-      - "3000:3000"
+      - 3001:3001
+    volumes:
+      - ./service-data/logs:/var/log
+    environment:
+      - OTEL_EXPORTER_OTLP_INSECURE=true
+      - OTEL_EXPORTER_OTLP_ENDPOINT=http://otel-collector:4317 # Address where to send metrics & traces
 
+  ##
+  ## Traces to grafana
+  ##
+  tempo:
+    image: grafana/tempo:latest
+    restart: unless-stopped
+    command:
+      - "-config.file=/etc/tempo.yaml"
+    volumes:
+      - ./monitoring/tempo/tempo.yaml:/etc/tempo.yaml
+      - tempo-storage:/var/lib/tempo
+    ports:
+      - "3200:3200" # tempo
+      - "4320:4317" # OTLP gRPC for traces
+  ##
+  ## Logs to grafana
+  ##
+  loki:
+    image: grafana/loki:latest
+    restart: unless-stopped
+    ports:
+      - 3100:3100
+  promtail:
+    image: grafana/promtail:latest
+    restart: unless-stopped
+    volumes:
+      - ./monitoring/promtail/promtail-config.yml:/etc/promtail/promtail-config.yml
+      - ./service-data/logs:/var/log
+    command: -config.file=/etc/promtail/promtail-config.yml
+  ##
+  ##
+  ##
+
+  prometheus:
+    image: prom/prometheus:latest
+    restart: unless-stopped
+    ports:
+      - 9090:9090
+    volumes:
+      - ./monitoring/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+    command:
+      - --config.file=/etc/prometheus/prometheus.yml
+      - --web.enable-otlp-receiver
+      - --web.enable-remote-write-receiver
+      - --enable-feature=exemplar-storage
+      - --enable-feature=native-histograms
+
+  grafana:
+    image: grafana/grafana:latest
+    restart: unless-stopped
+    ports:
+      - 3000:3000
+    user: "1000"
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=grafana
+    volumes:
+      - ./monitoring/grafana:/etc/grafana/provisioning
+      - ./service-data/grafana-data:/var/lib/grafana
+
+  otel-collector:
+    image: otel/opentelemetry-collector-contrib:latest
+    restart: unless-stopped
+    volumes:
+      - ./monitoring/openTelemetry/collector-config.yaml:/etc/otelcol-contrib/config.yaml
+    ports:
+      - 1888:1888 # pprof extension
+      - 8888:8888 # Prometheus metrics exposed by the Collector
+      - 8889:8889 # Prometheus exporter metrics
+      - 13133:13133 # health_check extension
+      - 4317:4317 # OTLP gRPC receiver
+      - 4318:4318 # OTLP http receiver
+      - 55679:55679 # zpages extension
+    depends_on:
+      - tempo
+      - prometheus
+
+volumes:
+  tempo-storage:

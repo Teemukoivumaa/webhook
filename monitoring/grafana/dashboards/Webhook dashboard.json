@@ -1,0 +1,692 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": 1,
+  "links": [],
+  "panels": [
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineStyle": {
+              "fill": "solid"
+            },
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "fieldMinMax": false,
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 0
+      },
+      "id": 1,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "11.5.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "disableTextWrap": false,
+          "editorMode": "builder",
+          "expr": "webhook_counter_Count_total",
+          "fullMetaSearch": false,
+          "includeNullMetadata": true,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "A",
+          "useBackend": false
+        }
+      ],
+      "title": "Count of webhooks received",
+      "type": "timeseries"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 24,
+        "x": 0,
+        "y": 8
+      },
+      "id": 7,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "## Log information",
+        "mode": "markdown"
+      },
+      "pluginVersion": "11.5.2",
+      "title": "",
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "loki",
+        "uid": "P8E80F9AEF21F6940"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": true,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "fieldMinMax": false,
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 10
+      },
+      "id": 2,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "timezone": ["Europe/Helsinki"],
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "11.5.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "loki",
+            "uid": "P8E80F9AEF21F6940"
+          },
+          "direction": "backward",
+          "editorMode": "code",
+          "expr": "count_over_time({job=\"webhook\"}[1h])",
+          "queryType": "range",
+          "refId": "A"
+        }
+      ],
+      "title": "Requests Over Time",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "loki",
+        "uid": "P8E80F9AEF21F6940"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 7,
+        "x": 12,
+        "y": 10
+      },
+      "id": 4,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "fields": "",
+          "reducer": ["sum"],
+          "show": false
+        },
+        "showHeader": true
+      },
+      "pluginVersion": "11.5.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "loki",
+            "uid": "P8E80F9AEF21F6940"
+          },
+          "direction": "backward",
+          "editorMode": "code",
+          "expr": "{job=\"webhook\"} | json message=\"message.body\"",
+          "queryType": "range",
+          "refId": "A"
+        }
+      ],
+      "title": "Request bodies",
+      "transformations": [
+        {
+          "id": "extractFields",
+          "options": {
+            "delimiter": ",",
+            "format": "json",
+            "jsonPaths": [
+              {
+                "path": "message"
+              }
+            ],
+            "keepTime": true,
+            "replace": true,
+            "source": "labels"
+          }
+        },
+        {
+          "id": "groupBy",
+          "options": {
+            "fields": {
+              "message": {
+                "aggregations": ["count"],
+                "operation": "groupby"
+              }
+            }
+          }
+        }
+      ],
+      "type": "table"
+    },
+    {
+      "datasource": {
+        "type": "loki",
+        "uid": "P8E80F9AEF21F6940"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 5,
+        "x": 19,
+        "y": 10
+      },
+      "id": 5,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "fields": "",
+          "reducer": ["sum"],
+          "show": false
+        },
+        "showHeader": true
+      },
+      "pluginVersion": "11.5.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "loki",
+            "uid": "P8E80F9AEF21F6940"
+          },
+          "direction": "backward",
+          "editorMode": "code",
+          "expr": "{job=\"webhook\"} | json ip=\"message.ip\"",
+          "queryType": "range",
+          "refId": "A"
+        }
+      ],
+      "title": "IP Addresses",
+      "transformations": [
+        {
+          "id": "extractFields",
+          "options": {
+            "delimiter": ",",
+            "format": "json",
+            "jsonPaths": [
+              {
+                "path": "ip"
+              }
+            ],
+            "keepTime": false,
+            "replace": true,
+            "source": "labels"
+          }
+        },
+        {
+          "id": "groupBy",
+          "options": {
+            "fields": {
+              "ip": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "message": {
+                "aggregations": [],
+                "operation": "groupby"
+              }
+            }
+          }
+        }
+      ],
+      "type": "table"
+    },
+    {
+      "datasource": {
+        "type": "loki",
+        "uid": "P8E80F9AEF21F6940"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 18
+      },
+      "id": 3,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "11.5.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "loki",
+            "uid": "P8E80F9AEF21F6940"
+          },
+          "direction": "backward",
+          "editorMode": "builder",
+          "expr": "count(rate({job=\"webhook\"} | json | line_format `{{.level}}` |= `info` [1m]))",
+          "queryType": "range",
+          "refId": "Info"
+        },
+        {
+          "datasource": {
+            "type": "loki",
+            "uid": "P8E80F9AEF21F6940"
+          },
+          "direction": "backward",
+          "editorMode": "builder",
+          "expr": "count(rate({job=\"webhook\"} | json | line_format `{{.level}}` |= `warn` [1m]))",
+          "hide": false,
+          "queryType": "range",
+          "refId": "Warn"
+        },
+        {
+          "datasource": {
+            "type": "loki",
+            "uid": "P8E80F9AEF21F6940"
+          },
+          "direction": "backward",
+          "editorMode": "builder",
+          "expr": "count(rate({job=\"webhook\"} | json | line_format `{{.level}}` |= `error` [1m]))",
+          "hide": false,
+          "queryType": "range",
+          "refId": "Error"
+        }
+      ],
+      "title": "Log amounts",
+      "type": "timeseries"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 24,
+        "x": 0,
+        "y": 26
+      },
+      "id": 8,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "## Trace information",
+        "mode": "markdown"
+      },
+      "pluginVersion": "11.5.2",
+      "title": "",
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "tempo",
+        "uid": "tempo"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 28
+      },
+      "id": 6,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": ["lastNotNull"],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.5.2",
+      "targets": [
+        {
+          "filters": [
+            {
+              "id": "9a3acb54",
+              "operator": "=",
+              "scope": "span"
+            },
+            {
+              "id": "service-name",
+              "operator": "=",
+              "scope": "resource",
+              "tag": "service.name",
+              "value": ["webhook-app"],
+              "valueType": "string"
+            }
+          ],
+          "limit": 20,
+          "queryType": "traceqlSearch",
+          "refId": "A",
+          "tableType": "traces"
+        }
+      ],
+      "title": "Traces stats",
+      "type": "stat"
+    }
+  ],
+  "preload": false,
+  "refresh": "",
+  "schemaVersion": 40,
+  "tags": [],
+  "templating": {
+    "list": []
+  },
+  "time": {
+    "from": "now-3h",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "browser",
+  "title": "Webhook dashboard",
+  "uid": "cedimok8ia680b",
+  "version": 3,
+  "weekStart": ""
+}
